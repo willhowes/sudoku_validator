@@ -47,7 +47,7 @@ describe '#sudoku_validator' do
                             ])).to eq(false)
   end
 
-  it 'returns false given a solution that starts 1,2,3,4,5,6,7,8,9 and increments by 1 on each line (edge case)' do
+  it 'returns false given a solution that starts 1,2,3,4,5,6,7,8,9 and increments by 1 on each line' do
     expect(sudoku_validator([
                               [1, 2, 3, 4, 5, 6, 7, 8, 9], 
                               [2, 3, 4, 5, 6, 7, 8, 9, 1], 
@@ -59,4 +59,16 @@ describe '#sudoku_validator' do
                               [8, 9, 1, 2, 3, 4, 5, 6, 7], 
                               [9, 1, 2, 3, 4, 5, 6, 7, 8]])).to eq(false)
   end
+  it 'returns false given a solution that starts 1,2,3,4,5,6,7,8,9 and increments by 1 on each line (edge case)' do
+    expect(sudoku_validator([
+                              [2, 3, 4, 5, 6, 7, 8, 9, 1],
+                              [1, 2, 3, 4, 5, 6, 7, 8, 9],
+                              [3, 4, 5, 6, 7, 8, 9, 1, 2], 
+                              [4, 5, 6, 7, 8, 9, 1, 2, 3], 
+                              [5, 6, 7, 8, 9, 1, 2, 3, 4], 
+                              [6, 7, 8, 9, 1, 2, 3, 4, 5], 
+                              [7, 8, 9, 1, 2, 3, 4, 5, 6], 
+                              [8, 9, 1, 2, 3, 4, 5, 6, 7], 
+                              [9, 1, 2, 3, 4, 5, 6, 7, 8]])).to eq(false)
+    end                            
 end
