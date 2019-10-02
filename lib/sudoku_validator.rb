@@ -52,41 +52,15 @@ def any_duplicates_cell?(board)
 		numbers_sudoku_index[index] = number
 	end
 	board.flatten.each_with_index do |number, index|
-		cell_to_check = 0
 		SUDOKU_MATRIX.each do |cell_number, cell_values|
 			if SUDOKU_MATRIX[cell_number].include?(index)
-				cell_to_check = cell_number
-			end
-		end
-		SUDOKU_MATRIX[cell_to_check].each do |index_to_check|
-			if numbers_sudoku_index[index_to_check] == number && index_to_check != index
-				return true
+				SUDOKU_MATRIX[cell_number].each do |index_to_check|
+					if numbers_sudoku_index[index_to_check] == number && index_to_check != index
+						return true
+					end
+				end
 			end
 		end
 	end
 	false
 end
-
-
-# if line_index < 7
-# 	if num_index < 7
-# 		2.times do |i|
-# 			p "--------------"
-# 			p "NUMBER CHECKING: #{num}"
-# 			p "CHECKING AGAINST #{board[line_index + i +1][num_index +1] }"
-# 			p "CHECKING AGAINST #{board[line_index + i +1][num_index +2] }"
-# 			return true if num == board[line_index + i +1][num_index +1] || num == board[line_index + i +1][num_index +2]
-# 		end
-# 	elsif num_index == 7
-# 		2.times do |i|
-# 			return true if num == board[line_index + i +1][num_index +1]
-# 		end
-# 	end
-# end
-# if line_index == 7
-# 	if num_index < 7
-# 		return true if num == board[line_index +1][num_index +1] || num == board[line_index +1][num_index +2]
-# 	elsif num_index == 7
-# 		return true if num == board[line_index +1][num_index +1]
-# 	end
-# end
